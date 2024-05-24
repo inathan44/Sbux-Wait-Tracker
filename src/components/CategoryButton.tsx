@@ -1,34 +1,67 @@
+import {
+  FormControl,
+  // FormDescription,
+  FormField,
+  FormItem,
+  // FormLabel,
+  // FormMessage,
+} from '@/components/ui/form';
+import { Checkbox } from '@/components/ui/checkbox';
+
 type CategoryButtonProps = {
-  label: 'food' | 'mobile' | 'drinks';
-  checked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  form: UseFormReturn<
+    {
+      food?: boolean | undefined;
+      mobile?: boolean | undefined;
+      drinks?: boolean | undefined;
+      stack?: boolean | undefined;
+      foodItems?: number | undefined;
+      drinkItems?: number | undefined;
+      mobileItems?: number | undefined;
+    },
+    unknown,
+    undefined
+  >;
+  icon: React.ReactNode;
+  categoryError: boolean;
+  name:
+    | 'food'
+    | 'mobile'
+    | 'drinks'
+    | 'stack'
+    | 'foodItems'
+    | 'drinkItems'
+    | 'mobileItems';
 };
 
+import { UseFormReturn } from 'react-hook-form';
 import { cn } from '@/lib/utils';
 
-const CategoryButton = ({ label, checked, onChange }: CategoryButtonProps) => {
+const CategoryButton = ({
+  form,
+  icon,
+  categoryError,
+  name,
+}: CategoryButtonProps) => {
   return (
-    <label className='inline-flex items-center cursor-pointer relative'>
-      <span
-        className={cn(
-          'border-8 w-64 h-48 relative rounded-xl border-slate-400',
-          {
-            'border-blue-500': checked,
-          }
-        )}
-      >
-        <input
-          type='checkbox'
-          className='opacity-0 absolute'
-          checked={checked}
-          onChange={onChange}
-        />
-        {/* {checked && <span className='block w-3 h-3 bg-white rounded'></span>} */}
-      </span>
-      <span className='text-gray-700 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-3xl'>
-        {label}
-      </span>
-    </label>
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem className='flex flex-row items-start space-x-3 space-y-0 rounded-md p-4'>
+          <FormControl>
+            <Checkbox
+              checked={!!field.value}
+              onCheckedChange={field.onChange}
+              icon={icon}
+              className={cn({
+                'border-red-500 border-2': categoryError,
+              })}
+            />
+          </FormControl>
+        </FormItem>
+      )}
+    />
   );
 };
 

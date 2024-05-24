@@ -10,12 +10,36 @@ export const trackerSchema = z
     drinkItems: z.number().optional(),
     mobileItems: z.number().optional(),
   })
-  .refine(
-    (data) =>
-      data.food === true || data.drinks === true || data.mobile === true,
-    {
-      message:
-        'At least one of the fields food, drinks, mobile need to be checked',
-      path: ['food', 'drinks', 'mobile'], // specify the fields this error is related to
+  // .refine(
+  //   (data) =>
+  //     data.mobile === true || data.drinks === true || data.f === true,
+  //   {
+  //     message:
+  //       'At least one of the fields food, drinks, mobile need to be checked',
+  //     path: ['food'],
+  //   }
+  // );
+  .superRefine((data, ctx) => {
+    if (data.mobile === false && data.drinks === false && data.food === false) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['mobile'],
+        message:
+          'At least one of the fields food, drinks, mobile need to be checked',
+      });
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['drinks'],
+        message:
+          'At least one of the fields food, drinks, mobile need to be checked',
+      });
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['food'],
+        message:
+          'At least one of the fields food, drinks, mobile need to be checked',
+      });
     }
-  );
+  });
+
+export type TrackerSchema = z.infer<typeof trackerSchema>;
