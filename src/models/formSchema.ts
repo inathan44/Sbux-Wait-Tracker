@@ -10,15 +10,6 @@ export const trackerSchema = z
     drinkItems: z.number().optional(),
     mobileItems: z.number().optional(),
   })
-  // .refine(
-  //   (data) =>
-  //     data.mobile === true || data.drinks === true || data.f === true,
-  //   {
-  //     message:
-  //       'At least one of the fields food, drinks, mobile need to be checked',
-  //     path: ['food'],
-  //   }
-  // );
   .superRefine((data, ctx) => {
     if (data.mobile === false && data.drinks === false && data.food === false) {
       ctx.addIssue({
@@ -39,6 +30,17 @@ export const trackerSchema = z
         message:
           'At least one of the fields food, drinks, mobile need to be checked',
       });
+    }
+  })
+  .superRefine((data) => {
+    if (data.food === false) {
+      data.foodItems = 0;
+    }
+    if (data.drinks === false) {
+      data.drinkItems = 0;
+    }
+    if (data.mobile === false) {
+      data.mobileItems = 0;
     }
   });
 

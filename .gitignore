@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+supabase
+
+vite-env.d.ts
+
+types/supabase.ts
+
+.env
