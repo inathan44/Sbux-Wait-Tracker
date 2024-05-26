@@ -27,7 +27,7 @@ type StackSelectProps = {
 const StackSelect = ({ form }: StackSelectProps) => {
   return (
     <>
-      <div className="my-12 mr-auto ">
+      <div className="my-4 mr-auto ">
         <div className="mb-4 flex w-full items-center gap-2 border-b-4 border-b-[#D4E9E2]">
           <p className="font-sodo font-bold">Is there a stack?</p>
           <Popover>
