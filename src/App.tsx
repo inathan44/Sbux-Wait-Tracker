@@ -64,7 +64,9 @@ function App() {
   async function onSubmit(values: TrackerSchema) {
     setLoading(true);
 
-    const { data, error } = await supabase.from("entries").insert(values);
+    const { data, error } = await supabase
+      .from("entries")
+      .insert({ ...values, user: session?.user?.email });
 
     if (error && error.message) {
       if (
