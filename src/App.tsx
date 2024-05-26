@@ -19,6 +19,7 @@ import doubleSmokedBacon from "./assets/double_smoked_bacon.webp";
 import mobileOrder from "./assets/mobile_order1.webp";
 import summerBerry from "./assets/summer_berry.webp";
 import { ArrowRight } from "lucide-react";
+import Header from "@/components/Header.tsx";
 
 function App() {
   const navigate = useNavigate();
@@ -104,11 +105,12 @@ function App() {
 
   return (
     <>
+      <Header />
       <div className="min-h-[calc(100vh_-_80px)] bg-[#F9F9F9] px-3">
         {submitError && (
           <p className="text-center text-red-500">{submitError}</p>
         )}
-        <div className="flex flex-col items-center font-sodo md:mx-auto  md:max-w-2xl lg:max-w-3xl">
+        <div className="flex flex-col items-center font-sodo md:mx-auto md:max-w-2xl lg:max-w-3xl">
           {/* <h1 className='text-3xl font-semibold  p-8  w-full text-center bg-[#00754A] text-purple-100 font-sodo'>
             What are we waiting on?
           </h1> */}
@@ -177,7 +179,7 @@ function App() {
                 type="submit"
                 disabled={loading}
                 className={cn(
-                  "fixed bottom-12 right-6 h-16 w-32 rounded-full bg-[#00754A] font-sodo text-2xl shadow-2xl transition-all hover:bg-[#006241] hover:brightness-125 md:right-8 lg:right-12",
+                  "fixed bottom-12 right-6 z-10 h-16 w-32 rounded-full bg-[#00754A] font-sodo text-2xl shadow-2xl transition-all hover:bg-[#006241] hover:brightness-125 md:right-8 lg:right-12",
                   { "w-16 p-0 shadow-none": loading },
                 )}
               >
@@ -191,7 +193,7 @@ function App() {
           </Form>
           {/* END FORM */}
 
-          <p className="text-black">
+          <p className="absolute bottom-2 text-black">
             NOTE: this site is not affiliated with Starbucks corporation
             <span className="align-super text-xs">&copy;</span> in any way.
           </p>
