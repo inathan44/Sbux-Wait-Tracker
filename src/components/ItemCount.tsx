@@ -49,7 +49,12 @@ const ItemCount = ({ form, name }: ItemCountProps) => {
 
   return (
     <>
-      <div className="flex items-center rounded-sm border border-slate-300 font-sodo font-bold shadow-sm">
+      <div
+        className={cn(
+          "flex items-center rounded-sm border border-slate-500 font-sodo font-bold shadow-sm",
+          { "border-slate-300": categoryNotSelected(name) },
+        )}
+      >
         <FormField
           control={form.control}
           name={name}
@@ -60,7 +65,7 @@ const ItemCount = ({ form, name }: ItemCountProps) => {
                   form.setValue(name, +(form.getValues(name) || 0) - 1)
                 }
                 className={cn(
-                  "px-10 py-6 text-xl font-bold text-black disabled:text-gray-300",
+                  "py-6 text-xl font-bold text-black disabled:text-gray-300 md:px-8 lg:px-10",
                 )}
                 disabled={categoryNotSelected(name) || fieldIsZero(name)}
                 variant={"ghost"}
@@ -89,7 +94,7 @@ const ItemCount = ({ form, name }: ItemCountProps) => {
                   form.setValue(name, +(form.getValues(name) || 0) + 1)
                 }
                 className={cn(
-                  "px-10 py-6 text-xl font-bold text-black disabled:text-gray-300",
+                  "py-6 text-xl font-bold text-black disabled:text-gray-300 md:px-8 lg:px-10",
                 )}
                 variant={"ghost"}
                 disabled={categoryNotSelected(name)}

@@ -1,10 +1,10 @@
-@font-face {
-  font-family: 'sodoSans';
-  /* font-weight: 400; */
-  src: url('public/sodo-sans-8.ttf', format('truetype'));
-}
+@import url("https://db.onlinewebfonts.com/c/82218f205769deac1e6723cecdafb545?family=Lander+Grande+Black");
 
-@import url('https://db.onlinewebfonts.com/c/82218f205769deac1e6723cecdafb545?family=Lander+Grande+Black');
+@font-face {
+  font-family: "sodoSans";
+  /* font-weight: 400; */
+  src: url("public/sodo-sans-8.ttf", format("truetype"));
+}
 
 @tailwind base;
 @tailwind components;
