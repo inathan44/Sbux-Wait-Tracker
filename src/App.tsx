@@ -18,6 +18,7 @@ import { Session } from "@supabase/supabase-js";
 import doubleSmokedBacon from "./assets/double_smoked_bacon.webp";
 import mobileOrder from "./assets/mobile_order1.webp";
 import summerBerry from "./assets/summer_berry.webp";
+import { ArrowRight } from "lucide-react";
 
 function App() {
   const navigate = useNavigate();
@@ -79,9 +80,14 @@ function App() {
       console.log(data);
       toast({
         title: "Success",
-        description: "submitted successfully",
+        description: (
+          <p className="text-xs text-slate-600">
+            Swipe right to dismiss <ArrowRight className="inline w-4" />
+          </p>
+        ),
         duration: 2000,
-        className: "border-2 border-green-500",
+        className:
+          "border-2 border-green-500 mr-auto data-[state=open]:sm:slide-in-from-top-full",
       });
       form.reset();
     }

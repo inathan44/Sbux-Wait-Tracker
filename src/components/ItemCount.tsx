@@ -8,6 +8,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { useToast } from "@/components/ui/use-toast";
 
 type ItemCountProps = {
   form: UseFormReturn<
@@ -27,6 +28,8 @@ type ItemCountProps = {
 };
 
 const ItemCount = ({ form, name }: ItemCountProps) => {
+  const { toast } = useToast();
+
   function categoryNotSelected(
     name: "foodItems" | "drinkItems" | "mobileItems",
   ) {
@@ -52,8 +55,28 @@ const ItemCount = ({ form, name }: ItemCountProps) => {
       <div
         className={cn(
           "flex items-center rounded-sm border border-slate-500 font-sodo font-bold shadow-sm",
-          { "border-slate-300": categoryNotSelected(name) },
+          { "cursor-not-allowed border-slate-300": categoryNotSelected(name) },
         )}
+        onClick={() => {
+          if (
+            !form.getValues()?.food &&
+            !form.getValues()?.drinks &&
+            !form.getValues()?.mobile
+          ) {
+            toast({
+              title: "Must select a category",
+              variant: "destructive",
+              description: (
+                <p className="text-xs text-slate-600">
+                  Click on a category first then select number of items
+                </p>
+              ),
+              duration: 2000,
+              className:
+                "border-2 border-red-500 mr-auto data-[state=open]:sm:slide-in-from-top-full bg-red-300 text-black",
+            });
+          }
+        }}
       >
         <FormField
           control={form.control}
