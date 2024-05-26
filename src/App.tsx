@@ -15,6 +15,9 @@ import { useToast } from "@/components/ui/use-toast";
 import supabase from "@/supabaseConfig";
 import { useNavigate } from "react-router-dom";
 import { Session } from "@supabase/supabase-js";
+import doubleSmokedBacon from "./assets/double_smoked_bacon.webp";
+import mobileOrder from "./assets/mobile_order1.webp";
+import summerBerry from "./assets/summer_berry.webp";
 
 function App() {
   const navigate = useNavigate();
@@ -116,7 +119,7 @@ function App() {
                   icon={
                     <div>
                       <img
-                        src="/src/assets/summer_berry.webp"
+                        src={summerBerry}
                         className="mx-auto w-[150px] md:w-[200px]"
                       />
                       <p className="text-xl font-bold">Drinks</p>
@@ -131,7 +134,7 @@ function App() {
                   icon={
                     <div>
                       <img
-                        src="/src/assets/double_smoked_bacon.webp"
+                        src={doubleSmokedBacon}
                         className="mx-auto w-[120px] md:w-[250px]"
                       />
                       <p className="text-xl font-bold">Food</p>
@@ -146,7 +149,7 @@ function App() {
                   icon={
                     <div>
                       <img
-                        src="/src/assets/mobile_order1.webp"
+                        src={mobileOrder}
                         className="mx-auto w-32 p-2 md:w-auto"
                       />
                       <p className="text-xl font-bold">Mobile</p>
