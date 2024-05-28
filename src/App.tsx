@@ -3,7 +3,7 @@ import CategoryButton from "./components/CategoryButton";
 import { trackerSchema } from "./models/formSchema";
 import { Button } from "./components/ui/button";
 import ItemCount from "./components/ItemCount";
-import StackSelect from "./components/ui/StackSelect";
+import StackSelect from "./components/StackSelect";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { TrackerSchema } from "./models/formSchema";
@@ -194,11 +194,6 @@ function App() {
             </form>
           </Form>
           {/* END FORM */}
-
-          <p className="absolute bottom-2 text-black">
-            NOTE: this site is not affiliated with Starbucks corporation
-            <span className="align-super text-xs">&copy;</span> in any way.
-          </p>
         </div>
       </div>
       <Toaster />
