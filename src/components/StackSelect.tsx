@@ -5,7 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@radix-ui/react-popover";
-import { FormField } from "./form";
+import { FormField } from "./ui/form";
 import { UseFormReturn } from "react-hook-form";
 
 type StackSelectProps = {
