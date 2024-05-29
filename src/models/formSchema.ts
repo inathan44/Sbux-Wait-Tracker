@@ -1,11 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const trackerSchema = z
   .object({
     food: z.boolean().optional(),
     drinks: z.boolean().optional(),
     mobile: z.boolean().optional(),
-    stack: z.boolean().optional(),
+    stack: z.boolean(),
     foodItems: z.number().optional(),
     drinkItems: z.number().optional(),
     mobileItems: z.number().optional(),
@@ -14,21 +14,21 @@ export const trackerSchema = z
     if (data.mobile === false && data.drinks === false && data.food === false) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        path: ['mobile'],
+        path: ["mobile"],
         message:
-          'At least one of the fields food, drinks, mobile need to be checked',
+          "At least one of the fields food, drinks, mobile need to be checked",
       });
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        path: ['drinks'],
+        path: ["drinks"],
         message:
-          'At least one of the fields food, drinks, mobile need to be checked',
+          "At least one of the fields food, drinks, mobile need to be checked",
       });
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        path: ['food'],
+        path: ["food"],
         message:
-          'At least one of the fields food, drinks, mobile need to be checked',
+          "At least one of the fields food, drinks, mobile need to be checked",
       });
     }
   })

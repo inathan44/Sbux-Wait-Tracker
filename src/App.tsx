@@ -44,7 +44,6 @@ function App() {
       food: false,
       drinks: false,
       mobile: false,
-      stack: false,
       foodItems: 0,
       drinkItems: 0,
       mobileItems: 0,

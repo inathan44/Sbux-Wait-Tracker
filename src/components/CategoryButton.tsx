@@ -11,13 +11,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 type CategoryButtonProps = {
   form: UseFormReturn<
     {
-      food?: boolean | undefined;
-      mobile?: boolean | undefined;
-      drinks?: boolean | undefined;
-      stack?: boolean | undefined;
+      stack: boolean;
       foodItems?: number | undefined;
       drinkItems?: number | undefined;
       mobileItems?: number | undefined;
+      food?: boolean | undefined;
+      mobile?: boolean | undefined;
+      drinks?: boolean | undefined;
     },
     unknown,
     undefined
